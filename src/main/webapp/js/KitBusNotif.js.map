@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "KitBusNotif.js",
+  "sourceRoot": "../../coffee/",
+  "sources": [
+    "BusToRide.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,CAAG,SAAC,MAAD,EAAkB,CAAlB,GAAA,CAAA,CAAH,CAAa,MAAb,EAAyB,MAAzB,CAAA,CAAA"
+}
