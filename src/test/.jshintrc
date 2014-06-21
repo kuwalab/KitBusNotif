@@ -1,0 +1,10 @@
+{
+  "extends": "../../.jshintrc",
+  "globals": {
+    "assert": false,
+    "test": false,
+    "suite": false,
+    "setup": false,
+    "teardown": false
+  }
+}

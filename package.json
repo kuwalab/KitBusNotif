@@ -12,10 +12,12 @@
     "grunt-contrib-compass": "0.8.0",
     "grunt-contrib-uglify": "0.4.0",
     "grunt-contrib-watch": "0.5.3",
-    "mocha-phantomjs": "3.4.1"
+    "mocha-phantomjs": "3.4.1",
+    "mocha": "1.20.1",
+    "chai": "1.9.1"
   },
   "scripts": {
-    "test": "./node_modules/mocha-phantomjs/bin/mocha-phantomjs src/test/test.html"
+    "test": "mocha --ui tdd src/test/*.js"
   },
   "repository": "",
   "author": "kuwalab",
