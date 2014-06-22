@@ -1,5 +1,6 @@
 do (global = this, $ = jQuery) ->
   global.app = global.app || {}
+  global.app.model = global.app.model || {}
 
   class BusToRide extends Backbone.Model
     @NO_LOCATION = -1
@@ -21,6 +22,6 @@ do (global = this, $ = jQuery) ->
       @set('minute', minute)
       return
 
-  global.app.BusToRide = BusToRide;
+  global.app.model.BusToRide = BusToRide;
 
   return

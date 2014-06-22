@@ -4,6 +4,7 @@ var __hasProp = {}.hasOwnProperty,
 (function(global, $) {
   var BusToRide;
   global.app = global.app || {};
+  global.app.model = global.app.model || {};
   BusToRide = (function(_super) {
     __extends(BusToRide, _super);
 
@@ -38,7 +39,7 @@ var __hasProp = {}.hasOwnProperty,
     return BusToRide;
 
   })(Backbone.Model);
-  global.app.BusToRide = BusToRide;
+  global.app.model.BusToRide = BusToRide;
 })(this, jQuery);
 
 //# sourceMappingURL=KitBusNotif.js.map

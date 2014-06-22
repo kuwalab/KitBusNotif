@@ -13,7 +13,7 @@ module.exports = (grunt) ->
           bare: true
           sourceMap: true
         files:
-          'src/main/webapp/js/KitBusNotif.js': 'src/main/coffee/*.coffee'
+          'src/main/webapp/js/KitBusNotif.js': 'src/main/coffee/**/*.coffee'
     uglify:
       dev:
         files: 
