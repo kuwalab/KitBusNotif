@@ -13,16 +13,18 @@ var __hasProp = {}.hasOwnProperty,
 
     BusToRide.NO_LOCATION = -1;
 
+    BusToRide.NO_TIME = -1;
+
     BusToRide.prototype.defaults = {
       location: BusToRide.NO_LOCATION,
-      hour: -1,
-      minute: -1
+      hour: BusToRide.NO_TIME,
+      minute: BusToRide.NO_TIME
     };
 
     return BusToRide;
 
   })(Backbone.Model);
   global.app.BusToRide = BusToRide;
-})(window, jQuery);
+})(this, jQuery);
 
 //# sourceMappingURL=KitBusNotif.js.map

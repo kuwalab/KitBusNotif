@@ -4,6 +4,9 @@
   "description": "KIT Bus Notif",
   "main": "Gruntfile.coffee",
   "dependencies": {
+    "jquery": "2.1.1",
+    "underscore": "1.6.0",
+    "backbone": "1.1.2"
   },
   "devDependencies": {
     "grunt": "0.4.5",
@@ -17,7 +20,7 @@
     "chai": "1.9.1"
   },
   "scripts": {
-    "test": "mocha --ui tdd src/test/*.js"
+    "test": "mocha --ui tdd --reporter spec src/test/*.js"
   },
   "repository": "",
   "author": "kuwalab",
