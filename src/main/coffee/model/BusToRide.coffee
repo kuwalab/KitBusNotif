@@ -22,6 +22,7 @@ do (global = this, $ = jQuery) ->
       @set('minute', minute)
       return
 
-  global.app.model.BusToRide = BusToRide;
+  global.app.model.BusToRide = BusToRide
+  global.app.model.busToRide = new BusToRide()
 
   return
