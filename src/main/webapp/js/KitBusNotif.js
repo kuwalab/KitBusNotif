@@ -15,10 +15,24 @@ var __hasProp = {}.hasOwnProperty,
 
     BusToRide.NO_TIME = -1;
 
+    BusToRide.LOC_1 = 0;
+
+    BusToRide.LOC_74 = 1;
+
+    BusToRide.LOC_61 = 2;
+
+    BusToRide.LOC_65 = 3;
+
     BusToRide.prototype.defaults = {
       location: BusToRide.NO_LOCATION,
       hour: BusToRide.NO_TIME,
       minute: BusToRide.NO_TIME
+    };
+
+    BusToRide.prototype.setBus = function(loc, hour, minute) {
+      this.set('location', loc);
+      this.set('hour', hour);
+      this.set('minute', minute);
     };
 
     return BusToRide;
