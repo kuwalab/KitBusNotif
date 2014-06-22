@@ -31,4 +31,14 @@ suite('BusToRideTest', function () {
     assert.equal(busToRide.get('hour'), 12, '時間が12');
     assert.equal(busToRide.get('minute'), 34, '分が34');
   });
+
+  test('change:locationイベント', function(done) {
+    var busToRide = new BusToRide();
+    busToRide.on('change:location', function() {
+      assert.equal(busToRide.get('location'), BusToRide.LOC_61, 'change LOC_61');
+      assert.equal(busToRide.previous('location'), BusToRide.NO_LOCATION, 'change前の値 NO_LOCAtion');
+      done();
+    });
+    busToRide.setBus(BusToRide.LOC_61, 12, 34);
+  });
 });
