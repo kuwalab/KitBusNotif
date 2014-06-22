@@ -40,6 +40,31 @@ var __hasProp = {}.hasOwnProperty,
 
   })(Backbone.Model);
   global.app.model.BusToRide = BusToRide;
+  global.app.model.busToRide = new BusToRide();
+})(this, jQuery);
+
+(function(global, $) {
+  var BusToRideView;
+  global.app = global.app || {};
+  global.app.view = global.app.view || {};
+  global.JST = global.JST || {};
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- dispHour >:<%- dispMinute ></span>");
+  BusToRideView = (function(_super) {
+    __extends(BusToRideView, _super);
+
+    function BusToRideView() {
+      return BusToRideView.__super__.constructor.apply(this, arguments);
+    }
+
+    BusToRideView.prototype.render = function() {
+      this.$el.html(global.JST['app.tmpl.BusToRide'](this.model));
+      return this;
+    };
+
+    return BusToRideView;
+
+  })(Backbone.View);
+  global.app.view.BusToRideView = BusToRideView;
 })(this, jQuery);
 
 //# sourceMappingURL=KitBusNotif.js.map

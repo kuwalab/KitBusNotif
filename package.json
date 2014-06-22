@@ -20,7 +20,7 @@
     "chai": "1.9.1"
   },
   "scripts": {
-    "test": "mocha --ui tdd --reporter spec src/test/**/*.js"
+    "test": "script/test.sh"
   },
   "repository": "",
   "author": "kuwalab",

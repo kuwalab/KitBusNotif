@@ -1,10 +1,3 @@
-var chai = require('chai');
-var assert = chai.assert;
-
-global.jQuery = require('jquery');
-global._ = require('underscore');
-global.Backbone = require('backbone');
-var app = require("../../main/webapp/js/KitBusNotif.min.js").app;
 var BusToRide = app.model.BusToRide;
 
 suite('BusToRideTest', function () {
