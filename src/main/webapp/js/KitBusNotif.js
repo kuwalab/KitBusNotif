@@ -36,6 +36,16 @@ var __hasProp = {}.hasOwnProperty,
       this.set('minute', minute);
     };
 
+    BusToRide.prototype.getViewTime = function() {
+      var hour, minute;
+      hour = this.get('hour');
+      minute = this.get('minute');
+      if (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {
+        return '選択してください';
+      }
+      return hour + ':' + minute;
+    };
+
     return BusToRide;
 
   })(Backbone.Model);
@@ -48,7 +58,7 @@ var __hasProp = {}.hasOwnProperty,
   global.app = global.app || {};
   global.app.view = global.app.view || {};
   global.JST = global.JST || {};
-  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- dispHour >:<%- dispMinute ></span>");
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getViewTime() %>:</span>");
   BusToRideView = (function(_super) {
     __extends(BusToRideView, _super);
 
