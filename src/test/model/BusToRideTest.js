@@ -25,6 +25,8 @@ suite('BusToRideTest', function () {
     assert.equal(busToRide.get('location'), BusToRide.LOC_1, '場所が1号館');
     assert.equal(busToRide.get('hour'), 12, '時間が12');
     assert.equal(busToRide.get('minute'), 34, '分が34');
+
+    assert.equal(busToRide.getDisplayTime(), '12:34', '表示用の時刻');
   });
 
   test('change:locationイベント', function(done) {
@@ -34,6 +36,7 @@ suite('BusToRideTest', function () {
       assert.equal(busToRide.previous('location'), BusToRide.NO_LOCATION, 'change前の値 NO_LOCAtion');
       done();
     });
-    busToRide.setBus(BusToRide.LOC_61, 12, 34);
+    busToRide.setBus(BusToRide.LOC_61, 1, 3);
+    assert.equal(busToRide.getDisplayTime(), '1:3', '表示用の時刻');
   });
 });

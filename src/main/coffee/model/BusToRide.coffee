@@ -27,6 +27,8 @@ do (global = this, $ = jQuery) ->
       minute = @get 'minute'
       if hour is BusToRide.NO_TIME or minute is BusToRide.NO_TIME
         return '選択してください'
+      if hour.length is 1 then hour = '0' + hour
+      if minute.length is 1 then minute = '0' + minute
       hour + ':' + minute
 
   global.app.model.BusToRide = BusToRide

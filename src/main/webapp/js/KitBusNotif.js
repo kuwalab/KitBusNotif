@@ -43,6 +43,12 @@ var __hasProp = {}.hasOwnProperty,
       if (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {
         return '選択してください';
       }
+      if (hour.length === 1) {
+        hour = '0' + hour;
+      }
+      if (minute.length === 1) {
+        minute = '0' + minute;
+      }
       return hour + ':' + minute;
     };
 
