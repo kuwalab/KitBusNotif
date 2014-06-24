@@ -15,6 +15,8 @@ suite('BusToRideTest', function () {
     assert.equal(busToRide.get('location'), BusToRide.NO_LOCATION, 'locationが-1');
     assert.equal(busToRide.get('hour'), BusToRide.NO_TIME, 'hourが-1');
     assert.equal(busToRide.get('minute'), BusToRide.NO_TIME, 'minuteが-1');
+
+    assert.equal(busToRide.getDisplayTime(), '選択してください', '表示用の時刻')
   });
 
   test('setBus', function() {

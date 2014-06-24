@@ -36,7 +36,7 @@ var __hasProp = {}.hasOwnProperty,
       this.set('minute', minute);
     };
 
-    BusToRide.prototype.getViewTime = function() {
+    BusToRide.prototype.getDisplayTime = function() {
       var hour, minute;
       hour = this.get('hour');
       minute = this.get('minute');
@@ -58,7 +58,7 @@ var __hasProp = {}.hasOwnProperty,
   global.app = global.app || {};
   global.app.view = global.app.view || {};
   global.JST = global.JST || {};
-  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getViewTime() %>:</span>");
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getDisplayTime() %>:</span>");
   BusToRideView = (function(_super) {
     __extends(BusToRideView, _super);
 

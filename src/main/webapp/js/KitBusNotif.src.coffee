@@ -22,7 +22,7 @@ do (global = this, $ = jQuery) ->
       @set('minute', minute)
       return
 
-    getViewTime: ->
+    getDisplayTime: ->
       hour = @get 'hour'
       minute = @get 'minute'
       if hour is BusToRide.NO_TIME or minute is BusToRide.NO_TIME
@@ -41,7 +41,7 @@ do (global = this, $ = jQuery) ->
   global.JST = global.JST || {}
   global.JST['app.tmpl.BusToRide'] = _.template(
     """
-    <span><%- getViewTime() %>:</span>
+    <span><%- getDisplayTime() %>:</span>
     """
   )
 
