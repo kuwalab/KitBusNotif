@@ -1,4 +1,6 @@
 do (global = this, $ = jQuery) ->
+  'use strict'
+
   global.app = global.app || {}
   global.app.model = global.app.model || {}
 
@@ -37,6 +39,8 @@ do (global = this, $ = jQuery) ->
   return
 
 do (global = this, $ = jQuery) ->
+  'use strict'
+
   global.app = global.app || {}
   global.app.view = global.app.view || {}
 
