@@ -7,7 +7,7 @@ do (global = this, $ = jQuery) ->
   global.JST = global.JST || {}
   global.JST['app.tmpl.BusToRide'] = _.template(
     """
-    <span><%- getDisplayTime() %>:</span>
+    <span><%- getDisplayTime() %></span>
     """
   )
 

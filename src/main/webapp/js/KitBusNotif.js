@@ -66,7 +66,7 @@ var __hasProp = {}.hasOwnProperty,
   global.app = global.app || {};
   global.app.view = global.app.view || {};
   global.JST = global.JST || {};
-  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getDisplayTime() %>:</span>");
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getDisplayTime() %></span>");
   BusToRideView = (function(_super) {
     __extends(BusToRideView, _super);
 

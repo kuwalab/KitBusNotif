@@ -11,6 +11,6 @@ suite('BusToRideViewTest', function () {
     });
     assert.equal(busToRideView.$el, $div, 'Viewの$el');
     busToRideView.render();
-    console.log($div.html());
+    assert.equal(busToRideView.$el.text(), '選択してください', '時間無指定の場合のチェック');
   });
 });
