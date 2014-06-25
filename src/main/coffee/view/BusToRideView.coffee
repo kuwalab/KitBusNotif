@@ -12,6 +12,10 @@ do (global = this, $ = jQuery) ->
   )
 
   class BusToRideView extends Backbone.View
+    initialize: ->
+      @listenTo(@model, 'change', @render);
+      return
+
     render: ->
       @$el.html(global.JST['app.tmpl.BusToRide'](@model))
       return @

@@ -44,10 +44,10 @@ var __hasProp = {}.hasOwnProperty,
       if (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {
         return '選択してください';
       }
-      if (hour.length === 1) {
+      if (hour < 10) {
         hour = '0' + hour;
       }
-      if (minute.length === 1) {
+      if (minute < 10) {
         minute = '0' + minute;
       }
       return hour + ':' + minute;
@@ -73,6 +73,10 @@ var __hasProp = {}.hasOwnProperty,
     function BusToRideView() {
       return BusToRideView.__super__.constructor.apply(this, arguments);
     }
+
+    BusToRideView.prototype.initialize = function() {
+      this.listenTo(this.model, 'change', this.render);
+    };
 
     BusToRideView.prototype.render = function() {
       this.$el.html(global.JST['app.tmpl.BusToRide'](this.model));
