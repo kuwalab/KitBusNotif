@@ -32,10 +32,20 @@ suite('BusToRideTest', function () {
   test('change:locationイベント', function(done) {
     var busToRide = new BusToRide();
     busToRide.on('change:location', function() {
-      assert.equal(busToRide.get('location'), BusToRide.LOC_61, 'change LOC_61');
-      assert.equal(busToRide.previous('location'), BusToRide.NO_LOCATION, 'change前の値 NO_LOCAtion');
+      assert.equal(busToRide.get('location'), BusToRide.LOC_61, 'change');
+      assert.equal(busToRide.previous('location'), BusToRide.NO_LOCATION, 'change前の値 NO_LOCATION');
       done();
     });
     busToRide.setBus(BusToRide.LOC_61, 1, 3);
+  });
+
+  test('change:minuteイベント', function(done) {
+    var busToRide = new BusToRide();
+    busToRide.on('change:minute', function() {
+      assert.equal(busToRide.get('minute'), 11, 'change minute');
+      assert.equal(busToRide.previous('minute'), BusToRide.NO_TIME, 'change前の値 NO_TIME');
+      done();
+    });
+    busToRide.setBus(BusToRide.LOC_61, 1,11);
   });
 });
