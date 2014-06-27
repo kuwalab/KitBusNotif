@@ -46,6 +46,14 @@ suite('BusToRideTest', function () {
       assert.equal(busToRide.previous('minute'), BusToRide.NO_TIME, 'change前の値 NO_TIME');
       done();
     });
-    busToRide.setBus(BusToRide.LOC_61, 1,11);
+    busToRide.setBus(BusToRide.LOC_61, 1, 11);
+  });
+
+  test('change:minuteイベントが発火されないテスト', function() {
+    var busToRide = new BusToRide();
+    busToRide.on('change:minute', function() {
+      assert.fail();
+    });
+    busToRide.setBus(BusToRide.LOC_61, 1, BusToRide.NO_TIME);
   });
 });
