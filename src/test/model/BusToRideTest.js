@@ -37,6 +37,5 @@ suite('BusToRideTest', function () {
       done();
     });
     busToRide.setBus(BusToRide.LOC_61, 1, 3);
-    assert.equal(busToRide.getDisplayTime(), '01:03', '表示用の時刻');
   });
 });
