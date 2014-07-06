@@ -28,13 +28,28 @@ var __hasProp = {}.hasOwnProperty,
     BusToRide.prototype.defaults = {
       location: BusToRide.NO_LOCATION,
       hour: BusToRide.NO_TIME,
-      minute: BusToRide.NO_TIME
+      minute: BusToRide.NO_TIME,
+      untilMinute: BusToRide.NO_TIME
     };
 
     BusToRide.prototype.setBus = function(loc, hour, minute) {
       this.set('location', loc);
       this.set('hour', hour);
       this.set('minute', minute);
+    };
+
+    BusToRide.prototype.updateUntilMinute = function(now) {
+      var hour, minute, nowHour, nowMinute, untilMinute;
+      nowHour = now.getHours();
+      nowMinute = now.getMinutes();
+      hour = this.get('hour');
+      minute = this.get('minute');
+      if (nowHour > hour || (nowHour === hour && nowMinute > minute)) {
+        this.set('untilMinute', this.NO_TIME);
+        return;
+      }
+      untilMinute = (hour - nowHour) * 60 + minute - nowMinute;
+      this.set('untilMinute', untilMinute);
     };
 
     BusToRide.prototype.getDisplayTime = function() {

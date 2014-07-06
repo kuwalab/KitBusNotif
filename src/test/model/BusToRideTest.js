@@ -56,4 +56,19 @@ suite('BusToRideTest', function () {
     });
     busToRide.setBus(BusToRide.LOC_61, 1, BusToRide.NO_TIME);
   });
+
+  test('updateUntilMinuteのテスト', function(done) {
+    var busToRide = new BusToRide();
+    busToRide.on('change:untilMinute', function() {
+      assert.equal(busToRide.get('untilMinute'), 58, '現在 1:11 バス時刻 2:9 58分');
+      done();
+    });
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    busToRide.setBus(BusToRide.LOC_61, 2, 9);
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    var now = new Date();
+    now.setHours(1);
+    now.setMinutes(11);
+    busToRide.updateUntilMinute(now);
+  });
 });

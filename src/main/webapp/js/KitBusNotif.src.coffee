@@ -17,11 +17,28 @@ do (global = this, $ = jQuery) ->
       location: @NO_LOCATION
       hour: @NO_TIME
       minute: @NO_TIME
+      untilMinute: @NO_TIME
 
     setBus: (loc, hour, minute) ->
       @set('location', loc)
       @set('hour', hour)
       @set('minute', minute)
+      return
+
+    updateUntilMinute: (now) ->
+      nowHour = now.getHours()
+      nowMinute = now.getMinutes()
+
+      hour = @get('hour')
+      minute = @get('minute')
+
+      if nowHour > hour or (nowHour is hour and nowMinute > minute)
+        @set('untilMinute', @NO_TIME)
+        return
+
+      untilMinute = (hour - nowHour) * 60 + minute - nowMinute
+      @set('untilMinute', untilMinute)
+
       return
 
     getDisplayTime: ->
