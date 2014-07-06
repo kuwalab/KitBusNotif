@@ -33,7 +33,7 @@ do (global = this, $ = jQuery) ->
       minute = @get('minute')
 
       if nowHour > hour or (nowHour is hour and nowMinute > minute)
-        @set('untilMinute', @NO_TIME)
+        @set('untilMinute', BusToRide.NO_TIME)
         return
 
       untilMinute = (hour - nowHour) * 60 + minute - nowMinute

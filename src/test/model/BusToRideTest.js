@@ -86,4 +86,19 @@ suite('BusToRideTest', function () {
     now.setMinutes(11);
     busToRide.updateUntilMinute(now);
   });
+
+  test('updateUntilMinuteのテスト 過ぎてる', function() {
+    var busToRide = new BusToRide();
+    busToRide.on('change:untilMinute', function() {
+      // 値が変更されないので、ここは通らない。
+      assert.fail();
+    });
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    busToRide.setBus(BusToRide.LOC_61, 1, 11);
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    var now = new Date();
+    now.setHours(1);
+    now.setMinutes(12);
+    busToRide.updateUntilMinute(now);
+  });
 });

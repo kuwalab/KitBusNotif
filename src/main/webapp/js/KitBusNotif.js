@@ -45,7 +45,7 @@ var __hasProp = {}.hasOwnProperty,
       hour = this.get('hour');
       minute = this.get('minute');
       if (nowHour > hour || (nowHour === hour && nowMinute > minute)) {
-        this.set('untilMinute', this.NO_TIME);
+        this.set('untilMinute', BusToRide.NO_TIME);
         return;
       }
       untilMinute = (hour - nowHour) * 60 + minute - nowMinute;
