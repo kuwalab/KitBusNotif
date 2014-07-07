@@ -7,7 +7,13 @@ do (global = this, $ = jQuery) ->
   global.JST = global.JST || {}
   global.JST['app.tmpl.BusToRide'] = _.template(
     """
-    <span><%- getDisplayTime() %></span>
+    <span><%
+    if (hour === BusToRide.NO_TIME) {
+      %>選択してください<%
+    } else {
+      %><% if (hour < 10) { %>0<%} %><%- hour %>:<% if (minute < 10) { %>0<%} %><%- minute %><%
+    }
+    %></span>
     """
   )
 
@@ -17,7 +23,7 @@ do (global = this, $ = jQuery) ->
       return
 
     render: ->
-      @$el.html(global.JST['app.tmpl.BusToRide'](@model))
+      @$el.html(global.JST['app.tmpl.BusToRide'](@model.toJSON()))
       return @
 
   global.app.view.BusToRideView = BusToRideView

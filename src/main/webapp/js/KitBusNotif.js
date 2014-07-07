@@ -52,22 +52,6 @@ var __hasProp = {}.hasOwnProperty,
       this.set('untilMinute', untilMinute);
     };
 
-    BusToRide.prototype.getDisplayTime = function() {
-      var hour, minute;
-      hour = this.get('hour');
-      minute = this.get('minute');
-      if (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {
-        return '選択してください';
-      }
-      if (hour < 10) {
-        hour = '0' + hour;
-      }
-      if (minute < 10) {
-        minute = '0' + minute;
-      }
-      return hour + ':' + minute;
-    };
-
     return BusToRide;
 
   })(Backbone.Model);
@@ -81,7 +65,7 @@ var __hasProp = {}.hasOwnProperty,
   global.app = global.app || {};
   global.app.view = global.app.view || {};
   global.JST = global.JST || {};
-  global.JST['app.tmpl.BusToRide'] = _.template("<span><%- getDisplayTime() %></span>");
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%\nif (hour === BusToRide.NO_TIME) {\n  %>選択してください<%\n} else {\n  %><% if (hour < 10) { %>0<%} %><%- hour %>:<% if (minute < 10) { %>0<%} %><%- minute %><%\n}\n%></span>");
   BusToRideView = (function(_super) {
     __extends(BusToRideView, _super);
 
@@ -94,7 +78,7 @@ var __hasProp = {}.hasOwnProperty,
     };
 
     BusToRideView.prototype.render = function() {
-      this.$el.html(global.JST['app.tmpl.BusToRide'](this.model));
+      this.$el.html(global.JST['app.tmpl.BusToRide'](this.model.toJSON()));
       return this;
     };
 

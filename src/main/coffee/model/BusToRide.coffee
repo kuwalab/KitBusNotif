@@ -41,15 +41,6 @@ do (global = this, $ = jQuery) ->
 
       return
 
-    getDisplayTime: ->
-      hour = @get 'hour'
-      minute = @get 'minute'
-      if hour is BusToRide.NO_TIME or minute is BusToRide.NO_TIME
-        return '選択してください'
-      if hour < 10 then hour = '0' + hour
-      if minute < 10 then minute = '0' + minute
-      hour + ':' + minute
-
   global.app.model.BusToRide = BusToRide
   global.app.model.busToRide = new BusToRide()
 
