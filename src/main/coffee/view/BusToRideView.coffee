@@ -8,7 +8,7 @@ do (global = this, $ = jQuery) ->
   global.JST['app.tmpl.BusToRide'] = _.template(
     """
     <span><%
-    if (hour === BusToRide.NO_TIME) {
+    if (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {
       %>選択してください<%
     } else {
       %><% if (hour < 10) { %>0<%} %><%- hour %>:<% if (minute < 10) { %>0<%} %><%- minute %><%

@@ -65,7 +65,7 @@ var __hasProp = {}.hasOwnProperty,
   global.app = global.app || {};
   global.app.view = global.app.view || {};
   global.JST = global.JST || {};
-  global.JST['app.tmpl.BusToRide'] = _.template("<span><%\nif (hour === BusToRide.NO_TIME) {\n  %>選択してください<%\n} else {\n  %><% if (hour < 10) { %>0<%} %><%- hour %>:<% if (minute < 10) { %>0<%} %><%- minute %><%\n}\n%></span>");
+  global.JST['app.tmpl.BusToRide'] = _.template("<span><%\nif (hour === BusToRide.NO_TIME || minute === BusToRide.NO_TIME) {\n  %>選択してください<%\n} else {\n  %><% if (hour < 10) { %>0<%} %><%- hour %>:<% if (minute < 10) { %>0<%} %><%- minute %><%\n}\n%></span>");
   BusToRideView = (function(_super) {
     __extends(BusToRideView, _super);
 
