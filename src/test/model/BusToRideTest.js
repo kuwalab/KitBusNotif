@@ -89,4 +89,14 @@ suite('BusToRideTest', function () {
     now.setMinutes(12);
     busToRide.updateUntilMinute(now);
   });
+
+  test('updateUntilMinuteのテスト バスが選択されていない', function() {
+    var busToRide = new BusToRide();
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    var now = new Date();
+    now.setHours(1);
+    now.setMinutes(12);
+    busToRide.updateUntilMinute(now);
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+  });
 });
