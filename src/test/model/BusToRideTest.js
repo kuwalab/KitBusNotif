@@ -99,4 +99,37 @@ suite('BusToRideTest', function () {
     busToRide.updateUntilMinute(now);
     assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
   });
+
+  test('updateUntilMinuteのテスト alarmの時刻', function() {
+    var busToRide = new BusToRide();
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+    busToRide.setBus(BusToRide.LOC_61, 2, 9);
+    assert.equal(busToRide.get('untilMinute'), BusToRide.NO_TIME, '初期値');
+
+    assert.equal(busToRide.get('beforeMinute'), BusToRide.NO_TIME, '初期値');
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_OFF, '初期値');
+    busToRide.setAlerm(5)
+    assert.equal(busToRide.get('beforeMinute'), 5, '20分前');
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_ON, 'alarm on');
+    var now = new Date();
+    now.setHours(2);
+    now.setMinutes(3);
+    busToRide.updateUntilMinute(now);
+
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_ON, 'alarm on');
+    now.setHours(2);
+    now.setMinutes(4);
+    busToRide.updateUntilMinute(now);
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_TIME, 'alarm time');
+
+  });
+
+  test('setAlarmのテスト', function() {
+    var busToRide = new BusToRide();
+    assert.equal(busToRide.get('beforeMinute'), BusToRide.NO_TIME, '初期値');
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_OFF, '初期値');
+    busToRide.setAlerm(20)
+    assert.equal(busToRide.get('beforeMinute'), 20, '20分前');
+    assert.equal(busToRide.get('alarm'), BusToRide.ALARM_ON, 'alarm on');
+  });
 });

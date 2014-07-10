@@ -25,11 +25,19 @@ var __hasProp = {}.hasOwnProperty,
 
     BusToRide.LOC_65 = 3;
 
+    BusToRide.ALARM_OFF = 0;
+
+    BusToRide.ALARM_ON = 1;
+
+    BusToRide.ALARM_TIME = 2;
+
     BusToRide.prototype.defaults = {
       location: BusToRide.NO_LOCATION,
       hour: BusToRide.NO_TIME,
       minute: BusToRide.NO_TIME,
-      untilMinute: BusToRide.NO_TIME
+      untilMinute: BusToRide.NO_TIME,
+      beforeMinute: BusToRide.NO_TIME,
+      alarm: false
     };
 
     BusToRide.prototype.setBus = function(loc, hour, minute) {
@@ -38,8 +46,13 @@ var __hasProp = {}.hasOwnProperty,
       this.set('minute', minute);
     };
 
+    BusToRide.prototype.setAlerm = function(beforeMinute) {
+      this.set('alarm', BusToRide.ALARM_ON);
+      this.set('beforeMinute', beforeMinute);
+    };
+
     BusToRide.prototype.updateUntilMinute = function(now) {
-      var hour, minute, nowHour, nowMinute, untilMinute;
+      var alarm, beforeMinute, hour, minute, nowHour, nowMinute, untilMinute;
       nowHour = now.getHours();
       nowMinute = now.getMinutes();
       hour = this.get('hour');
@@ -50,6 +63,11 @@ var __hasProp = {}.hasOwnProperty,
       }
       untilMinute = (hour - nowHour) * 60 + minute - nowMinute;
       this.set('untilMinute', untilMinute);
+      beforeMinute = this.get('beforeMinute');
+      alarm = this.get('alarm');
+      if (alarm === BusToRide.ALARM_ON && beforeMinute === untilMinute) {
+        this.set('alarm', BusToRide.ALARM_TIME);
+      }
     };
 
     return BusToRide;
