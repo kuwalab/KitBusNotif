@@ -1,5 +1,5 @@
 {
-  "name": "KitBusNotif",
+  "name": "xxx",
   "version": "0.1.0",
   "homepage": "https://github.com/kuwalab/KitBusNotif",
   "authors": [
@@ -13,11 +13,7 @@
   ],
   "dependencies": {
     "jquery": "2.1.1",
-    "underscore": "1.6.0",
+    "underscore": "1.7.0",
     "backbone": "1.1.2"
-  },
-  "devDependencies": {
-    "mocha": "1.20.1",
-    "chai": "1.9.1"
   }
 }

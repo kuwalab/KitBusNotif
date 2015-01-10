@@ -1,46 +1,61 @@
 module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
+    dirs:
+      root: 'src/main/webapp'
+      coffee: '<%= dirs.root %>/coffee'
+      dev: '<%= dirs.root %>/jssrc'
+      dest: '<%= dirs.root %>/js'
 
-    connect:
-      server:
-        options:
-          port: 8000
-          hostname: '*'
-    coffee:
-      dev:
-        options:
-          bare: true
-          sourceMap: true
+    browserify:
+      coffee:
         files:
-          'src/main/webapp/js/KitBusNotif.js': 'src/main/coffee/**/*.coffee'
+          '<%= dirs.dev %>/KitBusNotif.js': ['<%= dirs.coffee %>/*.coffee']
+      options:
+        transform: ['coffeeify']
+        browserifyOptions:
+          extensions: ['.coffee']
+
     uglify:
-      dev:
-        files: 
-          'src/main/webapp/js/KitBusNotif.min.js': 'src/main/webapp/js/KitBusNotif.js'
+      my_target:
         options:
+          preserveComments: 'some' # /*!で始まるコメントを消さない
           sourceMap: true
-          sourceMapName: 'src/main/webapp/js/KitBusNotif.min.js.map'
-          sourceMapIncludeSources: true
-          sourceMapIn: 'src/main/webapp/js/KitBusNotif.js.map'
-          banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
-    compass:
-      dev:
-        options:
-          sassDir: 'src/main/scss'
-          cssDir: 'src/main/webapp/css'
-          environment: 'development'
+          sourceMapName: '<%= dirs.dev %>/KitBusNotif.map'
+        files:
+          '<%= dirs.dest %>/KitBusNotif.min.js': ['<%= dirs.dev %>/KitBusNotif.js']
+
+    karma:
+      unit:
+        configFile: 'karma.conf.coffee'
+      options:
+        client:
+          mocha:
+            ui: 'tdd'
+
     watch:
       scripts:
-        files: ['**/*.coffee', '**/*.scss']
-        tasks: ['coffee', 'uglify', 'compass']
+        files: ['**/*.coffee']
+        tasks: ['default']
         options:
           interrupt: true
 
-  grunt.loadNpmTasks('grunt-contrib-connect')
-  grunt.loadNpmTasks('grunt-contrib-coffee')
-  grunt.loadNpmTasks('grunt-contrib-uglify')
-  grunt.loadNpmTasks('grunt-contrib-compass')
-  grunt.loadNpmTasks('grunt-contrib-watch')
+    clean:
+      all: [
+        '<%= dirs.dest %>'
+        '<%= dirs.dev %>'
+        'bower_components'
+        'node_modules'
+      ]
+      dev: [
+        '<%= dirs.dest %>'
+        '<%= dirs.dev %>'
+      ]
 
-  grunt.registerTask('default', ['coffee', 'uglify', 'compass'])
+  grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-browserify')
+  grunt.loadNpmTasks('grunt-karma')
+
+  grunt.registerTask('default', ['browserify', 'uglify'])
