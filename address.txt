@@ -1,0 +1,2 @@
+http://www.kanazawa-it.ac.jp/shuttlebus/timetable.csv
+http://www.kanazawa-it.ac.jp/shuttlebus/servicetable.csv
