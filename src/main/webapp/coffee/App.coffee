@@ -1,7 +1,4 @@
-$ = require 'jquery'
+ServiceModel = require './model/ServiceModel'
 
-class Test
-  getVal: ->
-    'abc'
-
-console.log('test')
+s = new ServiceModel()
+console.log(s.toJSON())
