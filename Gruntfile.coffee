@@ -7,31 +7,19 @@ module.exports = (grunt) ->
       dev: '<%= dirs.root %>/jssrc'
       dest: '<%= dirs.root %>/js'
 
-    browserify:
-      coffee:
+    coffee:
+      app:
         files:
-          '<%= dirs.dev %>/KitBusNotif.js': ['<%= dirs.coffee %>/*.coffee']
-      options:
-        transform: ['coffeeify']
-        browserifyOptions:
-          extensions: ['.coffee']
+          '<%= dirs.dev %>/app.js': ['<%= dirs.coffee %>/**/*.coffee']
 
     uglify:
-      my_target:
+      app:
         options:
           preserveComments: 'some' # /*!で始まるコメントを消さない
           sourceMap: true
           sourceMapName: '<%= dirs.dev %>/KitBusNotif.map'
         files:
           '<%= dirs.dest %>/KitBusNotif.min.js': ['<%= dirs.dev %>/KitBusNotif.js']
-
-    karma:
-      unit:
-        configFile: 'karma.conf.coffee'
-      options:
-        client:
-          mocha:
-            ui: 'tdd'
 
     watch:
       scripts:
@@ -53,9 +41,8 @@ module.exports = (grunt) ->
       ]
 
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-watch')
-  grunt.loadNpmTasks('grunt-browserify')
-  grunt.loadNpmTasks('grunt-karma')
 
-  grunt.registerTask('default', ['browserify', 'uglify'])
+  grunt.registerTask('default', ['coffee', 'uglify'])
