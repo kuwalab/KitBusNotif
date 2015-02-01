@@ -10,7 +10,11 @@ module.exports = (grunt) ->
     coffee:
       app:
         files:
-          '<%= dirs.dev %>/app.js': ['<%= dirs.coffee %>/**/*.coffee']
+          '<%= dirs.dev %>/app.js': [
+            '<%= dirs.coffee %>/App.coffee'
+            '<%= dirs.coffee %>/model/*.coffee'
+            '<%= dirs.coffee %>/Init.coffee'
+          ]
 
     uglify:
       app:
